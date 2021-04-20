@@ -70,10 +70,10 @@ const TextAnnotator = <T extends Span>(props: TextAnnotatorProps<T>) => {
     }
   }
 
-  const {content, value, style} = props
+  const {content, value, style, ...divProps} = props
   const splits = splitWithOffsets(content, value)
   return (
-    <div style={style} onMouseUp={handleMouseUp}>
+    <div {...divProps} style={style} onMouseUp={handleMouseUp}>
       {splits.map(split => (
         <Split key={`${split.start}-${split.end}`} {...split} onClick={handleSplitClick} />
       ))}

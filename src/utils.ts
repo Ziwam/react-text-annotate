@@ -64,9 +64,8 @@ export const splitTokensWithOffsets = (text, offsets: {start: number; end: numbe
 }
 
 export const selectionIsEmpty = (selection: Selection) => {
-  let position = selection.anchorNode.compareDocumentPosition(selection.focusNode)
-
-  return position === 0 && selection.focusOffset === selection.anchorOffset
+  let position = selection.anchorNode ? selection.anchorNode.compareDocumentPosition(selection.focusNode) : 0;
+  return position === 0 && selection.focusOffset === selection.anchorOffset;
 }
 
 export const selectionIsBackwards = (selection: Selection) => {
